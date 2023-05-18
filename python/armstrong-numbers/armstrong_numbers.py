@@ -1,11 +1,10 @@
 def is_armstrong_number(number):
-    length = len(str(number))
-    str = str (number)
-    sum = 0
-    for i in str:
-        sum+= (int(str[i]) ** length)
+    x = str(number)
+    sum=0
+    for i in range(len(x)):
+        sum+=(int(x[i]) ** len(x))
 
     if sum == number:
-         return true
+        return True
     else:
-         return false
+        return False
