@@ -18,23 +18,31 @@ def score(dice, category):
     dice.sort()
 
     if category == ONES:
-        return f_Ones(dice)
+        return f_ones(dice)
     elif category == TWOS:
-        return f_Twos(dice)
+        return f_twos(dice)
     elif category == THREES:
-        return f_Threes(dice)
+        return f_threes(dice)
     elif category == FOURS:
-        return f_Fours(dice)
+        return f_fours(dice)
     elif category == FIVES:
-        return f_Fives(dice)
+        return f_fives(dice)
     elif category == SIXES:
-        return f_Sixes(dice)
+        return f_sixes(dice)
     elif category == YACHT:
-        return f_Yacht(dice)
+        return f_yacht(dice)
     elif category == FULL_HOUSE:
-        return f_Full_House(dice)
+        return f_full_house(dice)
+    elif category == FOUR_OF_A_KIND:
+        return f_four_of_a_kind(dice)
+    elif category == LITTLE_STRAIGHT:
+        return f_little_straight(dice)
+    elif category == BIG_STRAIGHT:
+        return f_big_straight(dice)
+    elif category == CHOICE:
+        return f_choice(dice)
 
-def f_Ones(dice):
+def f_ones(dice):
     count = 0
     for die in dice:
         if die == 1:
@@ -42,7 +50,7 @@ def f_Ones(dice):
 
     return count * 1
 
-def f_Twos(dice):
+def f_twos(dice):
     count = 0
     for die in dice:
         if die == 2:
@@ -50,7 +58,7 @@ def f_Twos(dice):
 
     return count * 2
 
-def f_Threes(dice):
+def f_threes(dice):
     count = 0
     for die in dice:
         if die == 3:
@@ -58,7 +66,7 @@ def f_Threes(dice):
 
     return count * 3
 
-def f_Fours(dice):
+def f_fours(dice):
     count = 0
     for die in dice:
         if die == 4:
@@ -66,7 +74,7 @@ def f_Fours(dice):
 
     return count * 4
 
-def f_Fives(dice):
+def f_fives(dice):
     count = 0
     for die in dice:
         if die == 5:
@@ -74,7 +82,7 @@ def f_Fives(dice):
 
     return count * 5
 
-def f_Sixes(dice):
+def f_sixes(dice):
     count = 0
     for die in dice:
         if die == 6:
@@ -82,15 +90,36 @@ def f_Sixes(dice):
 
     return count * 6
 
-def f_Yacht(dice):
+def f_yacht(dice):
     if dice[0] == dice[4]:
         return 50
     else:
         return 0
 
-def f_Full_House(dice):
+def f_full_house(dice):
     if dice[0] != dice[4]:
         if (dice[0] == dice[2] and dice[3] == dice[4]) or (dice[0] == dice[1] and dice[2] == dice[4]):
             return sum(dice)
 
     return 0
+
+def f_four_of_a_kind(dice):
+    if dice[0] == dice[3]:
+        return sum(dice[0:4])
+    elif dice[1] == dice[4]:
+        return sum(dice[1:5])
+    
+    return 0
+
+def f_little_straight(dice):
+    if dice[0] == 1 and dice[4] == 5 and sum(dice) == 15:
+        return 30
+    return 0
+
+def f_big_straight(dice):
+    if dice[0] == 2 and dice[4] == 6 and sum(dice) == 20:
+        return 30
+    return 0
+
+def f_choice(dice):
+    return sum(dice)
