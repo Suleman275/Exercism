@@ -17,18 +17,8 @@ CHOICE = 11
 def score(dice, category):
     dice.sort()
 
-    if category == ONES:
-        return f_ones(dice)
-    elif category == TWOS:
-        return f_twos(dice)
-    elif category == THREES:
-        return f_threes(dice)
-    elif category == FOURS:
-        return f_fours(dice)
-    elif category == FIVES:
-        return f_fives(dice)
-    elif category == SIXES:
-        return f_sixes(dice)
+    if category == ONES or category == TWOS or category == THREES or category == FOURS or category == FIVES or category == SIXES:
+        return f_nums(dice, category)
     elif category == YACHT:
         return f_yacht(dice)
     elif category == FULL_HOUSE:
@@ -42,53 +32,13 @@ def score(dice, category):
     elif category == CHOICE:
         return f_choice(dice)
 
-def f_ones(dice):
+def f_nums(dice, category):
     count = 0
     for die in dice:
-        if die == 1:
-            count+=1
+        if die == category:
+            count += 1
 
-    return count * 1
-
-def f_twos(dice):
-    count = 0
-    for die in dice:
-        if die == 2:
-            count+=1
-
-    return count * 2
-
-def f_threes(dice):
-    count = 0
-    for die in dice:
-        if die == 3:
-            count+=1
-
-    return count * 3
-
-def f_fours(dice):
-    count = 0
-    for die in dice:
-        if die == 4:
-            count+=1
-
-    return count * 4
-
-def f_fives(dice):
-    count = 0
-    for die in dice:
-        if die == 5:
-            count+=1
-
-    return count * 5
-
-def f_sixes(dice):
-    count = 0
-    for die in dice:
-        if die == 6:
-            count+=1
-
-    return count * 6
+    return count*category
 
 def f_yacht(dice):
     if dice[0] == dice[4]:
