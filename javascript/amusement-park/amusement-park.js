@@ -4,13 +4,15 @@
 /**
  * Creates a new visitor.
  *
- * @param {string} name
- * @param {number} age
- * @param {string} ticketId
+ * @param {string} names
+ * @param {number} ages
+ * @param {string} ticketIds
  * @returns {Visitor} the visitor that was created
  */
-export function createVisitor(name, age, ticketId) {
-  throw new Error('Please implement the createVisitor function.');
+export function createVisitor(names, ages, ticketIds) {
+  return {name: names,
+    age: ages,
+    ticketId: ticketIds}
 }
 
 /**
@@ -20,7 +22,8 @@ export function createVisitor(name, age, ticketId) {
  * @returns {Visitor} the visitor without a ticket
  */
 export function revokeTicket(visitor) {
-  throw new Error('Please implement the revokeTicket function.');
+  visitor.ticketId = null;
+  return visitor
 }
 
 /**
@@ -31,7 +34,14 @@ export function revokeTicket(visitor) {
  * @returns {string} ticket status
  */
 export function ticketStatus(tickets, ticketId) {
-  throw new Error('Please implement the ticketStatus function.');
+  if (tickets[ticketId] === null) {
+    return 'not sold'
+  }
+  else if (tickets[ticketId] === undefined) {
+    return 'unknown ticket id'
+  }
+
+  return 'sold to ' + tickets[ticketId]
 }
 
 /**
@@ -43,7 +53,7 @@ export function ticketStatus(tickets, ticketId) {
  * @returns {string} ticket status
  */
 export function simpleTicketStatus(tickets, ticketId) {
-  throw new Error('Please implement the simpleTicketStatus function.');
+  return tickets[ticketId] ?? 'invalid ticket !!!'
 }
 
 /**
@@ -53,5 +63,5 @@ export function simpleTicketStatus(tickets, ticketId) {
  * @returns {string | undefined} version
  */
 export function gtcVersion(visitor) {
-  throw new Error('Please implement the gtcVersion function.');
+  return visitor.gtc?.version
 }
