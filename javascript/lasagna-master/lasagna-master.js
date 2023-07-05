@@ -35,8 +35,18 @@ export function quantities(layers) {
       noodles: noodleCount, 
       sauce: sauceCount
    }
+}
 
    export function addSecretIngredient(friendsList, myList) {
-      
+      myList[myList.length] = friendsList[friendsList.length-1];
    }
-}
+
+   export function scaleRecipe(recipe, portions=2) {
+      portions /= 2
+      const scaledRecipe = {}
+      for (let ingredient in recipe) {
+         scaledRecipe[ingredient] = recipe[ingredient]*portions
+      }
+
+      return scaledRecipe
+   }
