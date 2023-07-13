@@ -20,8 +20,7 @@ func CanSignalPrisoner(archerIsAwake, prisonerIsAwake bool) bool {
 func CanFreePrisoner(knightIsAwake, archerIsAwake, prisonerIsAwake, petDogIsPresent bool) bool {
 	if petDogIsPresent && !archerIsAwake {
 		return true
-	}
-	if !petDogIsPresent && prisonerIsAwake && !archerIsAwake && !knightIsAwake {
+	} else if !petDogIsPresent && prisonerIsAwake && !archerIsAwake && !knightIsAwake {
 		return true
 	}
 	return false
