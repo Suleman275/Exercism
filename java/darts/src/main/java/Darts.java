@@ -1,5 +1,15 @@
 class Darts {
     int score(double xOfDart, double yOfDart) {
-        throw new UnsupportedOperationException("Delete this statement and write your own implementation.");
+        double dist = Math.sqrt(xOfDart * xOfDart + yOfDart * yOfDart);
+
+        if (dist <= 1.0) {
+            return 10;
+        } else if (dist <= 5.0) {
+            return 5;
+        } else if (dist <= 10) {
+            return 1;
+        } else {
+            return 0;
+        }
     }
 }
